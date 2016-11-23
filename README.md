@@ -57,13 +57,13 @@ If you want to run the application manually instead of using docker-compose, the
 
 1. Create a new network for the application and the database:
 
-  ```
+  ```bash
   $ docker network create parse_network
   ```
 
 2. Start a MongoDB database in the network generated:
 
-  ```
+  ```bash
   $ docker run -d --name mongodb --net=parse_network bitnami/mongodb
   ```
 
@@ -71,7 +71,7 @@ If you want to run the application manually instead of using docker-compose, the
 
 3. Run the Parse container:
 
-  ```
+  ```bash
   $ docker run -d -p 1337:1337 --name parse --net=parse_network bitnami/parse
   ```
 
@@ -114,13 +114,13 @@ In this case you need to specify the directories to mount on the run command. Th
 
 1. Create a network (if it does not exist):
 
-  ```
+  ```bash
   $ docker network create parse-tier
   ```
 
 2. Create a MongoDB container with host volume:
 
-  ```
+  ```bash
   $ docker run -d --name mongodb \
     --net parse-tier \
     --volume /path/to/mongodb-persistence:/bitnami/mongodb \
@@ -131,7 +131,7 @@ In this case you need to specify the directories to mount on the run command. Th
 
 3. Run the Parse container:
 
-  ```
+  ```bash
   $ docker run -d --name parse -p 1337:1337 \ 
     --net parse-tier \
     --volume /path/to/parse-persistence:/bitnami/parse \
@@ -144,7 +144,7 @@ Bitnami provides up-to-date versions of Mongodb and Parse, including security pa
 
 1. Get the updated images:
 
-  ```
+  ```bash
   $ docker pull bitnami/parse:latest
   ```
 
@@ -185,7 +185,7 @@ application:
 
  * For manual execution add a `-e` option with each variable and value:
 
-```
+```bash
  $ docker run -d -e PARSE_SERVER_HOST=my_host -p 1337:1337 --name parse -v /your/local/path/bitnami/parse:/bitnami/parse --network=parse_network bitnami/parse
 ```
 
@@ -209,7 +209,7 @@ To backup your application data follow these steps:
 
 2. Copy the Parse data folder in the host:
 
-  ```
+  ```bash
   $ docker cp /your/local/path/bitnami:/bitnami/parse
   ```
 
